@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TITULO</title>
+        {% load static %}
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/main.css' %}">    
+    </head>
+
+    <body>
+        <div class="container">
+
+{# Sección Añadir Nuevo Show #}
+            <div class="row">
+                <div class="col-sm-9 col-md-8 col-lg-6 ms-3 ps-4 me-1 mt-5">
+                    <h1 class="text-center">Add a New Show</h1>
+
+                    <form action='/shows/new' method='post'>
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="titulo" class="form-label">Title:</label>
+                            <input name="title_in" type="text" class="form-control shadow bg-white rounded" id="titulo">
+                        </div>
+
+                        <div class="row">
+                            <div class="col mb-3">
+                                <label for="cadena" class="form-label">Network:</label>
+                                <input name="network_in" type="text" class="form-control shadow bg-white rounded" id="cadena">
+                            </div>
+                            
+                            <div class="col mb-3">
+                                <label for="release_date" class="form-label mb-2 d-block">Release Date:</label>
+                                <input name="rel_date_in" class="shadow bg-white rounded p-1" type="date" id="release_date">
+                            </div>
+                        </div>
+
+                        <label for="description" class="form-label">Description:</label>
+                        <textarea name="desc_in" class="form-control mb-5 shadow p-3 mb-5 bg-white rounded" id="description" rows="7"></textarea>
+
+                        <div class="row justify-content-center">
+                            <button type="submit" class="col-2 btn btn-primary">Add_!!</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col-sm-2 mt-4">
+                    <a href="/" class="uno text-end mt-4">Go Back</a>
+                </div>
+
+            </div>
+        </div>
+
+        <script src="{% static 'js/index.js' %}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+    </body>
+</html>

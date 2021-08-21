@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>All Tv Shows</title>
+        {% load static %}
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/main.css' %}">    
+    </head>
+
+    <body>
+        <div class="container">
+{# Sección Tabla con SHOWS en BD #}
+            <h2 class="mt-5 mb-5">All Shows:</h2>
+            <div class="row">
+                <div class="col-xs-12 col-md-10 col-lg-8">
+                    <table class="table table-striped table-bordered">
+                        <tr class="table-dark">
+                            <th class="text-center">ID</th>
+                            <th class="ps-5">Title</th>
+                            <th class="text-center">Network</th>
+                            <th class="text-center th-wider1">Relese Date</th>
+                            <th class="ps-5 th-wider2">Actions</th>
+                        </tr>
+                        {% for show in all_shows %}
+                        <tr>
+                            <td class="text-center">{{ show.id }}</td>
+                            <td class="p-2">{{ show.title }}</td>
+                            <td class="text-center">{{ show.network }}</td>
+                            <td class="text-center">{{ show.release_date|date:"M d, Y" }}</td>
+                            <td class="">
+                                <a href= "/shows/{{ show.id }}" class="acti view ms-2 py-1 px-2">Ver</a>
+                                <a href= "/shows/{{ show.id }}/edit" class="acti edit ms-2 py-1 px-2">Edit</a>
+                                <a href= "/shows/{{ show.id }}/delete" class="acti del ms-2 py-1 px-2">Delete</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <a href= "/shows/new" class="uno pt-3">Add a New Show</a>
+            </div>
+
+
+{# FIN Sección Tabla#}
+        </div> 
+
+
+{% comment %}
+{% endcomment %}
+
+
+        <script src="{% static 'js/index.js' %}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+    </body>
+</html>
